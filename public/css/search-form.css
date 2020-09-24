@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+}
+
+button {
+    border: 0;
+    border-collapse: collapse;
+    background: green;
+    color: white;
+    font-size: 2rem;
+    font-weight: normal;
+    margin-top: 10px;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+form {
+    max-width: 1280px;
+    width: 90%;
+}
+
+input#property_search_postcode {
+    text-transform: uppercase;
+    width: 100%;
+}
+
+input[type="text"] {
+    font-size: 1.8rem;
+    padding: 10px;
+}
+
+label {
+    display: block;
+    margin: 10px 0;
+}
+

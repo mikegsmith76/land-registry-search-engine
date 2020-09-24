@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="/css/search-form.css" />
+{% endblock %}
+
+{% block title %}Search{% endblock %}
+
+{% block body %}
+    <section class="container">
+        {{ form(form) }}
+    </section>
+
+{% endblock %}

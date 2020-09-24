@@ -7,40 +7,49 @@
 {% block title %}Search Results{% endblock %}
 
 {% block body %}
-<section class="property-list">
-    <h1>Search Results</h1>
-    {% if properties|length >0 %}
-        {% for property in properties %}
-        <div class="property-list__property">
-            {% if property.unitname|length > 0 %}
-                <h2>{{ property.unitname }} {{ property.housenumberorname }}, {{ property.street }}, {{ property.city }}, {{ property.postcode }}</h2>
+    <div class="container">
+        <section class="property-list">
+            <h1>Search Results</h1>
+            {% if properties|length >0 %}
+                <p class="property-list__credit">Contains HM Land Registry data &copy; Crown copyright and database right 2020. This data is licensed under the Open Government Licence v3.0.</p>
+
+                {% for property in properties %}
+                <div class="property-list__property">
+                    {% if property.unitname|length > 0 %}
+                        <h2>{{ property.unitname }} {{ property.housenumberorname }}, {{ property.street }}, {{ property.city }}, {{ property.postcode }}</h2>
+                    {% else %}
+                        <h2>{{ property.housenumberorname }} {{ property.street }}, {{ property.city }}, {{ property.postcode }}</h2>
+                    {% endif %}
+
+                    <p>Property type: {{ property.propertytype | format_property_type }}</p>
+
+                    {% if property.transactions|length > 0 %}
+                        <h3>Transactions</h3>
+                        <table class="property-list__transactions">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Price</th>
+                                    <th>Tenure</th>
+                                    <th>Is New</th>
+                                </tr>
+                            </thead>
+                            {% for transaction in property.transactions %}
+                                <tr>
+                                    <td>{{ transaction.date|date("jS F Y") }}</td>
+                                    <td>{{ transaction.price|format_currency("GBP") }}</td>
+                                    <td>{{ transaction.tenure|format_tenure }}</td>
+                                    <td>{% if transaction.new %}Yes{% else %}No{% endif %}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    {% endif %}
+                </div>
+                {% endfor %}
             {% else %}
-                <h2>{{ property.housenumberorname }} {{ property.street }}, {{ property.city }}, {{ property.postcode }}</h2>
+                <p>There are no results for your search.</p>
             {% endif %}
-
-            {% if property.transactions|length > 0 %}
-                <h3>Transactions</h3>
-                <table>
-                    <tr>
-                        <th>Date</th>
-                        <th>Price</th>
-                        <th>Tenure</th>
-                    </tr>
-                    {% for transaction in property.transactions %}
-                        <tr>
-                            <td>{{ transaction.date|date("jS F Y") }}</td>
-                            <td>{{ transaction.price|format_currency("GBP") }}</td>
-                            <td>{{ transaction.tenure|format_tenure }}</td>
-                        </tr>
-                    {% endfor %}
-                </table>
-            {% endif %}
-        </div>
-        {% endfor %}
-
-        <p>Contains HM Land Registry data &copy; Crown copyright and database right 2020. This data is licensed under the Open Government Licence v3.0.</p>
-    {% else %}
-        <p>There are no results for your search.</p>
-    {% endif %}
-</section>
+            <p><a href="/">Back to Search</a></p>
+        </section>
+    </div>
 {% endblock %}

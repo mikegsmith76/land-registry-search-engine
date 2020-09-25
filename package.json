@@ -1,0 +1,23 @@
+{
+  "name": "land-registry",
+  "version": "1.0.0",
+  "description": "A basic search engine for land registry data, written using Symfony 5.",
+  "dependencies": {
+    "sass": "^1.26.11"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build-css": "sass assets/css:public/css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikegsmith76/land-registry-search-engine.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikegsmith76/land-registry-search-engine/issues"
+  },
+  "homepage": "https://github.com/mikegsmith76/land-registry-search-engine#readme"
+}

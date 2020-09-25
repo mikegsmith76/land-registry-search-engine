@@ -1,5 +1,9 @@
 .idea
 data/*.txt
+node_modules
+public/css/*.css
+
+
 
 ###> symfony/framework-bundle ###
 /.env.local
